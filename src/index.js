@@ -7,26 +7,25 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
-import * as basicLightbox from 'basiclightbox';
+// import * as basicLightbox from 'basiclightbox';
 
-const instance = basicLightbox.create(`
-    <img src="" width="800" height="600">
-`);
+// const instance = basicLightbox.create(`
+//     <img src="" width="800" height="600">
+// `);
 
-instance.show();
+// instance.show();
+// cardContainer.addEventListener('click', a);
+
+// function a(event) {
+//   const x = event.currentTarget;
+//   console.log(x);
+// }
 
 const { cardContainer, searchForm, button } = getRefs();
 
 const pixabayApiService = new PixabayApiService();
 
 searchForm.addEventListener('submit', onSearch);
-cardContainer.addEventListener('click', a);
-
-function a(event) {
-  const x = event.currentTarget;
-  console.log(x);
-}
-
 button.addEventListener('click', onClickButton);
 
 function onClickButton(event) {
