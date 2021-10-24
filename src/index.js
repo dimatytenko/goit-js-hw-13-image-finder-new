@@ -7,19 +7,9 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
-// import * as basicLightbox from 'basiclightbox';
+import { openLightbox } from './js/lightbox';
 
-// const instance = basicLightbox.create(`
-//     <img src="" width="800" height="600">
-// `);
-
-// instance.show();
-// cardContainer.addEventListener('click', a);
-
-// function a(event) {
-//   const x = event.currentTarget;
-//   console.log(x);
-// }
+import * as basicLightbox from 'basiclightbox';
 
 const { cardContainer, searchForm, button } = getRefs();
 
@@ -27,6 +17,7 @@ const pixabayApiService = new PixabayApiService();
 
 searchForm.addEventListener('submit', onSearch);
 button.addEventListener('click', onClickButton);
+cardContainer.addEventListener('click', openLightbox);
 
 function onClickButton(event) {
   fetchPhotos();
