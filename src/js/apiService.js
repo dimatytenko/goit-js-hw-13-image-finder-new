@@ -1,7 +1,7 @@
 const API_KEY = '24005703-1514437038890a8f3813970a7';
-const BASE_URL = 'http://pixabay.com/api';
+const BASE_URL = 'https://pixabay.com/api';
 
-https: export default class PixabayApiService {
+export default class PixabayApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;

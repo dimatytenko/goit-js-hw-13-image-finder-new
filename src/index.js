@@ -37,6 +37,7 @@ function onSearch(event) {
 
   const searchQuery = event.currentTarget.elements.query.value;
   if (searchQuery === '') {
+    addIsHiddenBtn();
     tooManyMatches();
     return;
   }
@@ -44,6 +45,7 @@ function onSearch(event) {
   pixabayApiService.resetPage();
   clearCardContainer();
   fetchPhotos();
+  removeIsHiddenBtn();
 }
 
 function fetchPhotos() {
@@ -90,4 +92,12 @@ function notFound() {
     delay: 2000,
   });
   clearCardContainer();
+}
+
+function removeIsHiddenBtn() {
+  button.classList.remove('is-hidden');
+}
+
+function addIsHiddenBtn() {
+  button.classList.add('is-hidden');
 }

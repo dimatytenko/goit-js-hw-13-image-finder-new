@@ -48,3 +48,10 @@ body {
   text-align: center;
   background-color: rgb(193, 186, 186);
 }
+.is-hidden {
+  opacity: 0;
+}
+
+.hidden {
+  opacity: 1;
+}
