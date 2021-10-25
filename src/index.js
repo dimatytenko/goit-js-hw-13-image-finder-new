@@ -32,6 +32,7 @@ function onSearch(event) {
   pixabayApiService.query = searchQuery;
   pixabayApiService.resetPage();
   clearCardContainer();
+  addIsHiddenBtn();
   fetchPhotos();
 }
 async function fetchPhotos() {
