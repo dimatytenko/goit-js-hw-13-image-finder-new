@@ -33,7 +33,6 @@ function onSearch(event) {
   pixabayApiService.resetPage();
   clearCardContainer();
   fetchPhotos();
-  removeIsHiddenBtn();
 }
 async function fetchPhotos() {
   try {
@@ -43,6 +42,7 @@ async function fetchPhotos() {
       return;
     } else {
       appendPhotosMarkup(hits);
+      removeIsHiddenBtn();
       scrollToButton(button);
     }
   } catch (error) {
@@ -71,6 +71,7 @@ function tooManyMatches() {
   error({
     text: 'Ні так не піде! Уведи хоч щось!!!',
     animation: 'fade',
+
     delay: 2000,
   });
   clearCardContainer();
