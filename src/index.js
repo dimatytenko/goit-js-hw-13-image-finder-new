@@ -8,9 +8,6 @@ import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
 import { openLightbox } from './js/lightbox';
-
-import * as basicLightbox from 'basiclightbox';
-
 const { cardContainer, searchForm, button } = getRefs();
 
 const pixabayApiService = new PixabayApiService();
@@ -38,9 +35,9 @@ function onSearch(event) {
   fetchPhotos();
   removeIsHiddenBtn();
 }
-
-function fetchPhotos() {
-  pixabayApiService.fetchPhotos().then(hits => {
+async function fetchPhotos() {
+  try {
+    const hits = await pixabayApiService.fetchPhotos();
     if (hits.length === 0) {
       notFound();
       return;
@@ -48,7 +45,9 @@ function fetchPhotos() {
       appendPhotosMarkup(hits);
       scrollToButton(button);
     }
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function appendPhotosMarkup(photos) {
