@@ -42,8 +42,8 @@ async function fetchPhotos() {
       return;
     } else {
       appendPhotosMarkup(hits);
-      removeIsHiddenBtn();
       scrollToButton(button);
+      removeIsHiddenBtn();
     }
   } catch (error) {
     console.log(error);
