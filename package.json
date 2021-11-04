@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://dimatytenko.github.io/goit-js-hw-13-image-finder",
+  "homepage": "https://dimatytenko.github.io/goit-js-hw-13-image-finder-new",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder-new/"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@pnotify/core": "^5.2.0",
     "basiclightbox": "^5.0.4",
+    "infinite-scroll": "^4.0.1",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",

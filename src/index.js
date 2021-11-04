@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import './js/infinite_scroll';
 import PixabayApiService from './js/apiService';
 import photoTemplate from './templates/photo';
 import getRefs from './js/getRefs';
@@ -10,31 +11,24 @@ import '@pnotify/core/dist/PNotify.css';
 
 import { openLightbox } from './js/lightbox';
 
-const { cardContainer, searchForm, button } = getRefs();
+const { cardContainer, searchForm } = getRefs();
 
 const pixabayApiService = new PixabayApiService();
 
 searchForm.addEventListener('submit', onSearch);
-button.addEventListener('click', onClickButton);
 cardContainer.addEventListener('click', openLightbox);
-
-function onClickButton(event) {
-  fetchPhotos();
-}
 
 function onSearch(event) {
   event.preventDefault();
 
   const searchQuery = event.currentTarget.elements.query.value;
   if (searchQuery === '') {
-    addIsHiddenBtn();
     tooManyMatches();
     return;
   }
   pixabayApiService.query = searchQuery;
   pixabayApiService.resetPage();
   clearCardContainer();
-  addIsHiddenBtn();
   fetchPhotos();
 }
 async function fetchPhotos() {
@@ -45,8 +39,6 @@ async function fetchPhotos() {
       return;
     } else {
       appendPhotosMarkup(hits);
-      scrollToButton(button);
-      removeIsHiddenBtn();
     }
   } catch (error) {
     console.log(error);
@@ -59,15 +51,6 @@ function appendPhotosMarkup(photos) {
 
 function clearCardContainer() {
   cardContainer.innerHTML = '';
-}
-
-function scrollToButton(element) {
-  setTimeout(() => {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'end',
-    });
-  }, 500);
 }
 
 function tooManyMatches() {
@@ -87,11 +70,20 @@ function notFound() {
   });
   clearCardContainer();
 }
+// ===================================//
 
-function removeIsHiddenBtn() {
-  button.classList.remove('is-hidden');
-}
+const options = {
+  rootMargin: '150px',
+};
+const callback = entries => {
+  entries.forEach(entry => {
+    if (pixabayApiService.query !== '' && entry.isIntersecting) {
+      fetchPhotos();
+    }
+  });
+};
 
-function addIsHiddenBtn() {
-  button.classList.add('is-hidden');
-}
+let observer = new IntersectionObserver(callback, options);
+
+const sentinel = document.getElementById('sentinel');
+observer.observe(sentinel);
