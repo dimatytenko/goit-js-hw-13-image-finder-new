@@ -3,11 +3,13 @@ import PixabayApiService from './js/apiService';
 import photoTemplate from './templates/photo';
 import getRefs from './js/getRefs';
 
+// ================pnotify=======================//
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 
 import { openLightbox } from './js/lightbox';
+
 const { cardContainer, searchForm, button } = getRefs();
 
 const pixabayApiService = new PixabayApiService();
