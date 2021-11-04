@@ -11,7 +11,7 @@ body {
   margin-bottom: 30px;
   width: 100%;
   text-align: center;
-  background-color: rgb(193, 186, 186);
+  background-color: rgb(186, 193, 193);
 }
 
 .gallery {
@@ -23,6 +23,11 @@ body {
 
 .photo {
   cursor: pointer;
+  filter: grayscale(1);
+  transition: all 0.8s ease 0s;
+}
+.photo:hover {
+  filter: grayscale(0);
 }
 
 .photo-card {
@@ -53,7 +58,7 @@ body {
 .topbutton {
   width: 100px;
   border: 2px solid #ccc;
-  background: #a7f12e;
+  background: #7f6dab;
   text-align: center;
   padding: 10px;
   position: fixed;

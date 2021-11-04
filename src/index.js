@@ -22,11 +22,11 @@ function onSearch(event) {
   event.preventDefault();
 
   const searchQuery = event.currentTarget.elements.query.value;
-  if (searchQuery === '') {
+  pixabayApiService.query = searchQuery;
+  if (pixabayApiService.query === '') {
     tooManyMatches();
     return;
   }
-  pixabayApiService.query = searchQuery;
   pixabayApiService.resetPage();
   clearCardContainer();
   fetchPhotos();
